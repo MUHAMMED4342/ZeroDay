@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "name": "English",
+    "note": "Translators: copy this file to lang/<code>.json (tr, de, ...) and translate the values only. Keep keys and {placeholders}. Missing keys fall back to English. Command words in 'cmd' are added to the English ones."
+  },
+  "cmd": {
+    "help": [
+      "help",
+      "?"
+    ],
+    "scan": [
+      "scan"
+    ],
+    "connect": [
+      "connect",
+      "cd"
+    ],
+    "disconnect": [
+      "disconnect",
+      "dc"
+    ],
+    "ports": [
+      "ports",
+      "nmap"
+    ],
+    "exploit": [
+      "exploit",
+      "pwn"
+    ],
+    "crack": [
+      "crack"
+    ],
+    "tune": [
+      "tune"
+    ],
+    "ls": [
+      "ls",
+      "files"
+    ],
+    "read": [
+      "read",
+      "cat"
+    ],
+    "get": [
+      "get",
+      "download"
+    ],
+    "wipe": [
+      "wipe",
+      "clean"
+    ],
+    "status": [
+      "status",
+      "stat"
+    ],
+    "shop": [
+      "shop",
+      "market"
+    ],
+    "buy": [
+      "buy"
+    ],
+    "inv": [
+      "inv",
+      "inventory"
+    ],
+    "use": [
+      "use"
+    ],
+    "voice": [
+      "voice"
+    ],
+    "vol": [
+      "vol",
+      "volume"
+    ],
+    "quit": [
+      "quit",
+      "exit"
+    ]
+  },
+  "intro": [
+    "ZERO DAY",
+    "Year 2031. A megacorp hides a secret project called Zero Day on vault.lab. The way in runs through its network. Put on headphones: sounds come from the left and right ear.",
+    "Your goal: download core.dat from vault.lab. Every move leaves a trace. The ticking you hear is your trace level: the faster it ticks, the closer they are. At 100 percent you are caught.",
+    "Type help for commands. Start with: scan"
+  ],
+  "help": [
+    "Commands: scan, connect <name>, disconnect, ports, exploit <port>, crack, tune, ls, read <file>, get <file>, wipe, status, shop, buy <item>, inv, use <item>, voice on/off, vol 0-10, quit.",
+    "Tips: old software has holes. Some locks need an exploit first. Read the files for clues. Not every server is what it seems.",
+    "Tone lock: keys 1 to 4, R replays. Frequency lock: A and D move the dial. Firewall during a download: A for the left ear, D for the right ear."
+  ],
+  "ui": {
+    "unknown": "Unknown command. Type help.",
+    "no_conn": "Not connected. Use connect <name>.",
+    "denied": "Access denied. Take over the server first.",
+    "scan_h": "Servers on the network:",
+    "scan_row": "{n}. {name}, {ip} {tag}",
+    "tag_root": "(owned)",
+    "no_node": "I don't know that server. Use scan.",
+    "conn_ok": "Connected to {name}. No access yet. Type ports to listen for services.",
+    "conn_root": "Connected to {name}. You have admin access.",
+    "ports_h": "Open ports on {name}:",
+    "port_row": "Port {p}: {s}, {v}",
+    "usage_exploit": "Usage: exploit <port number>",
+    "port_closed": "That port is closed. Wasted time.",
+    "root_already": "Nothing left to do here.",
+    "x_ok": "Port {p} exploited! The service crashed and the door is open.",
+    "x_fail": "That service is up to date. The attack failed and security noticed.",
+    "trap": "ALARM! This was a trap and the alarms are going off.",
+    "no_lock": "No such lock on this server.",
+    "need_x": "You cannot reach the lock yet. Exploit a vulnerable service first.",
+    "simon_intro": "Tone lock: listen to {n} tones. Tone 1 is lowest and in the left ear, tone 4 is highest and in the right ear. Then repeat the sequence with keys 1 to 4. R replays it for 2 trace.",
+    "your_turn": "Your turn.",
+    "simon_fail": "Wrong tone. The lock reset. Type crack to try again.",
+    "simon_ok": "Lock open!",
+    "simon_auto": "Your decoder solved the tone lock.",
+    "tune_intro": "Frequency lock: press A or D to move the dial. The ping comes from the side where the signal is, and gets higher in pitch as you get closer. You have 14 tries.",
+    "tune_ok": "Signal locked!",
+    "tune_fail": "Out of tries. The lock reset. Type tune to try again.",
+    "rooted": "{name} is yours! You earned {cr} credits.",
+    "newnode": "A new server appeared: {name}. Use scan.",
+    "vault_open": "Both keys collected. vault.lab just appeared on the network!",
+    "ls": "Files: {f}",
+    "no_file": "No such file.",
+    "wipe_ok": "Logs wiped. Trace dropped.",
+    "wipe_done": "You already wiped this server.",
+    "status": "Trace {t} percent. Credits {cr}. {where}",
+    "where_in": "Connected to {name}.",
+    "where_none": "Not connected.",
+    "dl_start": "Download started. If you hear a warning in one ear, press A for left or D for right. Be quick.",
+    "dl_block": "Firewall dodged.",
+    "dl_caught": "The firewall caught you!",
+    "pct": "{p} percent",
+    "dl_other": "Downloaded. It is not the target, but it is worth {cr} credits.",
+    "win": "MISSION COMPLETE! You have the target file and got out. Rank: {rank}. Trace {t}, commands used {n}, credits {cr}.",
+    "lose": "TRACED. The connection is cut and the mission has failed. Game over.",
+    "warn": "WARNING: trace at {p} percent!",
+    "shop_h": "Equipment shop. Credits: {cr}",
+    "shop_row": "{id}: {name}, {price} credits. {desc}",
+    "noitem": "No such item.",
+    "own": "You already have that and it is active.",
+    "nofunds": "Not enough credits.",
+    "bought": "Bought {name}.",
+    "used": "Used {name}.",
+    "inv_empty": "Inventory empty.",
+    "inv_row": "Inventory: {f}",
+    "ev_admin": "An admin just logged in nearby!",
+    "ev_patrol": "A security scan swept the network.",
+    "ev_lucky": "A colleague sends you a small bonus for good work. 15 credits.",
+    "voice_on": "Voice on. Turn off your screen reader if it reads twice.",
+    "voice_off": "Voice off.",
+    "vol": "Volume {v}",
+    "bye": "Disconnected.",
+    "restart_q": "Press Enter to play again, Ctrl+C to quit.",
+    "pick_h": "Missions:",
+    "pick": "Type the number of a mission and press Enter:",
+    "v_none": "The mission has no servers.",
+    "v_start": "Choose the start server.",
+    "v_target": "No file is marked as the target. Write the word target as the third part of one file line.",
+    "v_ports": "{name} has no services.",
+    "v_x": "{name}: the exploit port is not one of its services.",
+    "v_c": "{name}: the tone lock length must be 0, or from 3 to 8.",
+    "v_lock": "{name} has no lock. Give it an exploit port, a frequency lock or a tone lock, or make it a trap.",
+    "v_needs": "{name} would never appear. Say which servers must be taken over first.",
+    "v_unreach": "{name} can never be reached.",
+    "v_goal": "The target file can never be reached.",
+    "dl_none": "Downloaded. It is not the target."
+  },
+  "ranks": [
+    "GHOST",
+    "OPERATOR",
+    "SCRIPT KIDDIE"
+  ],
+  "items": {
+    "vpn": {
+      "name": "VPN Tunnel",
+      "desc": "Permanently cuts trace gains by 30 percent."
+    },
+    "decoder": {
+      "name": "Tone Decoder",
+      "desc": "The next tone lock solves itself."
+    },
+    "jammer": {
+      "name": "Signal Jammer",
+      "desc": "The next download has no firewall alerts."
+    },
+    "ghost": {
+      "name": "Ghost Protocol",
+      "desc": "Instantly lowers trace by 30."
+    }
+  },
+  "nodes": {
+    "gate": {
+      "name": "gate.net",
+      "files": {
+        "notes": [
+          "notes.txt",
+          "Admin memo: mail.local uses a tone lock instead of passwords. Our intranet still runs ancient software. DO NOT touch archive.net, it is the honeypot we set up for intruders."
+        ],
+        "log": [
+          "net.log",
+          "03:12 tunnel opened between mail.local and intra.corp. vault.lab needs keys from both."
+        ]
+      }
+    },
+    "mail": {
+      "name": "mail.local",
+      "files": {
+        "inbox": [
+          "inbox.txt",
+          "Subject: vault.lab. The database there was never updated. You need an exploit, then a frequency lock, then a six tone lock."
+        ],
+        "mbox": [
+          "archive.mbox",
+          "Three years of boring emails. A buyer might pay for it."
+        ]
+      }
+    },
+    "intra": {
+      "name": "intra.corp",
+      "files": {
+        "wiki": [
+          "wiki.txt",
+          "Frequency locks: the ping comes from the side of the correct signal and gets higher as you get closer."
+        ],
+        "pay": [
+          "payroll.xls",
+          "Salaries of everyone. Sell it to the highest bidder."
+        ]
+      }
+    },
+    "arch": {
+      "name": "archive.net",
+      "files": {}
+    },
+    "vault": {
+      "name": "vault.lab",
+      "files": {
+        "staff": [
+          "staff.db",
+          "Staff records. Not the target."
+        ],
+        "core": [
+          "core.dat",
+          "Project Zero Day. 48 MB. This is it."
+        ]
+      }
+    }
+  },
+  "gui": {
+    "title": "Zero Day",
+    "tab_term": "Terminal",
+    "tab_notes": "Notes",
+    "tab_hist": "History",
+    "out_l": "Game output:",
+    "in_l": "Command (press Enter to send):",
+    "notes_l": "Your notes (saved automatically):",
+    "search_l": "Search history:",
+    "hist_l": "All messages from all sessions:",
+    "m_file": "&File",
+    "m_view": "&View",
+    "m_tools": "&Tools",
+    "m_quit": "&Quit",
+    "m_focus": "Focus &command box",
+    "m_ms": "&Mission editor...",
+    "ms_title": "Mission editor",
+    "ms_list": "Saved missions (select one to edit it):",
+    "ms_lang": "Language you are writing in:",
+    "ms_name": "Mission name:",
+    "ms_intro": "Story at the start (what the player hears first, one paragraph per line):",
+    "ms_servers": "Servers in this mission:",
+    "ms_start": "Server the player sees at the start:",
+    "ms_win": "Message when the player wins (optional):",
+    "ms_save": "Save mission",
+    "ms_new": "New mission",
+    "ms_delete": "Delete mission",
+    "ms_close": "Close",
+    "ms_saved": "Mission saved. It is in the mission list at the start of the next game.",
+    "ms_noname": "Please give the mission a name.",
+    "ms_nodel": "This mission is built in and cannot be deleted.",
+    "sv_title": "Server",
+    "sv_name": "Server name, for example bank.lab:",
+    "sv_ip": "IP address:",
+    "sv_ports": "Services, one per line: port, name, version and year. Example: 21 ftp vsftpd 2.3.4 (2011). Old versions are weak, new ones are safe:",
+    "sv_x": "Weak service port to exploit (0 means no exploit lock):",
+    "sv_tune": "Frequency lock (the player uses the tune command)",
+    "sv_c": "Tone lock length (0 means no tone lock, otherwise 3 to 8):",
+    "sv_pay": "Credits the player earns for taking over this server:",
+    "sv_trap": "This server is a trap (attacking it raises trace a lot)",
+    "sv_needs": "This server appears after the player takes over (check all that apply; the start server needs none):",
+    "sv_files": "Files, one per line, written as: file name | text | optional part. The optional part is a number of credits for selling the file, or the word target for the file that wins the game. Do not use the | sign inside the text:",
+    "sv_ok": "OK",
+    "sv_cancel": "Cancel",
+    "sv_add": "Add server",
+    "sv_edit": "Edit server",
+    "sv_remove": "Remove server",
+    "sv_select": "Select a server in the list first.",
+    "sv_bad_port": "This line does not start with a port number: {line}",
+    "sv_noname": "Please give the server a name.",
+    "ms_translate": "Translate this mission",
+    "tr_title": "Translate mission",
+    "tr_where": "Where this text is used:",
+    "tr_orig": "Original text:",
+    "tr_new": "Your translation ({lang}). Keep any word in curly braces, like {name}, exactly as it is. Leave it empty to keep the original text:",
+    "tr_prev": "&Previous",
+    "tr_next": "&Next",
+    "tr_done": "&Done and save",
+    "tr_cancel": "Cancel",
+    "tr_count": "{i} of {n}: {where}",
+    "tr_name": "Mission name",
+    "tr_intro": "Story, paragraph {n}",
+    "tr_win": "Message when the player wins",
+    "tr_file": "File {file} on {server}",
+    "tr_same": "First choose the language you want to translate into, in the field Language you are writing in.",
+    "m_tr": "&Translation editor...",
+    "tl_title": "Translate the game",
+    "tl_code": "Language code, for example tr, de or fr:",
+    "tl_ok": "Start",
+    "tl_bad": "Please type a language code of two or three letters. It cannot be en.",
+    "tl_saved": "Saved. The game texts are in lang/{code}.json, and translated missions are saved in the missions folder next to the program. Restart the game to use the new language. It is chosen automatically when your Windows language matches.",
+    "tr_ph": "The translation has a word in curly braces that the original does not have: {ph}. Please fix it.",
+    "tt_ui": "Game message",
+    "tt_help": "Help text, line",
+    "tt_intro": "Story line",
+    "tt_intro_tip": "Starting tip, line",
+    "tt_ranks": "Rank name",
+    "tt_items": "Shop item",
+    "tt_cmd": "Extra command words in your language, separated by commas (optional, leave empty to keep the English commands only)",
+    "tt_nodes": "Zero Day file",
+    "tt_gui": "Window text"
+  },
+  "intro_tip": [
+    "Every move leaves a trace. The ticking you hear is your trace level: the faster it ticks, the closer you are to being detected. At 100 percent the mission fails.",
+    "Type help for commands. Start with: scan"
+  ]
+}

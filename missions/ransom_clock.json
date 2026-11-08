@@ -1,0 +1,163 @@
+{
+  "id": "ransom_clock",
+  "order": 40,
+  "name": {
+    "en": "Ransom Clock",
+    "tr": "Fidye Saati"
+  },
+  "intro": {
+    "en": [
+      "A bakery chain's computers are being locked by ransomware. You work for the incident response team the company hired. The only copy of the unlock key sits on the company's own backup server, which the attacker has protected with two locks.",
+      "Your goal: download unlock.key from backup.crumb so the company can restore its files without paying. Stay quiet, the attacker is watching the network."
+    ],
+    "tr": [
+      "Bir fırın zincirinin bilgisayarları fidye yazılımıyla kilitleniyor. Şirketin tuttuğu olay müdahale ekibinde çalışıyorsunuz. Açma anahtarının tek kopyası şirketin kendi yedekleme sunucusunda ve saldırgan onu iki kilitle korumuş.",
+      "Hedefiniz: şirket fidye ödemeden dosyalarına kavuşabilsin diye backup.crumb sunucusundan unlock.key dosyasını indirmek. Sessiz olun, saldırgan ağı izliyor."
+    ]
+  },
+  "start": "mail",
+  "nodes": {
+    "mail": {
+      "name": "mail.crumb",
+      "ip": "10.20.0.5",
+      "ports": [
+        [
+          25,
+          "smtp",
+          "postfix 2.5 (2008)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "i": {
+          "name": "incident.txt",
+          "text": {
+            "en": "Incident log: the attacker came in through this mail server at 02:14 using an old hole, then moved on to the file server and the accounting server.",
+            "tr": "Olay günlüğü: saldırgan saat 02:14'te eski bir açığı kullanarak bu posta sunucusundan girdi, sonra dosya sunucusuna ve muhasebe sunucusuna geçti."
+          }
+        }
+      },
+      "x": 25,
+      "pay": 25
+    },
+    "pay": {
+      "name": "payme.crumb",
+      "ip": "10.20.0.66",
+      "ports": [
+        [
+          80,
+          "http",
+          "Apache 1.3 (1999)"
+        ]
+      ],
+      "files": {},
+      "trap": 1,
+      "needs": [
+        "mail"
+      ]
+    },
+    "files": {
+      "name": "files.crumb",
+      "ip": "10.20.0.10",
+      "ports": [
+        [
+          445,
+          "smb",
+          "Samba 3.0 (2007)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "files": {
+        "e": {
+          "name": "locked.txt",
+          "text": {
+            "en": "Every file here now ends in .locked. The attacker's note says the key is on the backup server. The note also points to payme.crumb, which is the attacker's own payment page. Stay away from it.",
+            "tr": "Buradaki her dosya artık .locked ile bitiyor. Saldırganın notu anahtarın yedekleme sunucusunda olduğunu söylüyor. Not ayrıca saldırganın kendi ödeme sayfası olan payme.crumb'ı gösteriyor. Ondan uzak durun."
+          }
+        }
+      },
+      "x": 445,
+      "c": 4,
+      "pay": 30,
+      "needs": [
+        "mail"
+      ]
+    },
+    "books": {
+      "name": "books.crumb",
+      "ip": "10.20.0.11",
+      "ports": [
+        [
+          3389,
+          "rdp",
+          "RDP 5 (2003)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "n": {
+          "name": "note.txt",
+          "text": {
+            "en": "The attacker moved the backup server and protected it with two locks: a frequency lock and a six tone code.",
+            "tr": "Saldırgan yedekleme sunucusunu taşıdı ve iki kilitle korudu: bir frekans kilidi ve altı tonluk bir kod."
+          }
+        }
+      },
+      "x": 3389,
+      "t": 1,
+      "pay": 30,
+      "needs": [
+        "mail"
+      ]
+    },
+    "backup": {
+      "name": "backup.crumb",
+      "ip": "10.20.0.99",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ],
+        [
+          3306,
+          "mysql",
+          "MySQL 5.0 (2005)"
+        ]
+      ],
+      "files": {
+        "k": {
+          "name": "unlock.key",
+          "text": {
+            "en": "The key that unlocks every file.",
+            "tr": "Tüm dosyaların kilidini açan anahtar."
+          }
+        }
+      },
+      "x": 3306,
+      "t": 1,
+      "c": 6,
+      "needs": [
+        "files",
+        "books"
+      ],
+      "target": "k"
+    }
+  },
+  "win": {
+    "en": "The key works. By morning every bakery has its recipes and orders back, and nobody paid a cent.",
+    "tr": "Anahtar çalışıyor. Sabaha kadar her fırın tariflerine ve siparişlerine kavuşuyor ve kimse tek kuruş ödemiyor."
+  }
+}

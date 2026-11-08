@@ -1,0 +1,204 @@
+{
+  "id": "zero_day",
+  "lang_text": true,
+  "name": {
+    "en": "Zero Day",
+    "tr": "Sıfır Gün"
+  },
+  "intro": {
+    "en": [
+      "Year 2031. A megacorp hides a secret project called Zero Day on vault.lab. The way in runs through its network. Put on headphones: sounds come from the left and right ear.",
+      "Your goal: download core.dat from vault.lab. Every move leaves a trace. The ticking you hear is your trace level: the faster it ticks, the closer they are. At 100 percent you are caught."
+    ]
+  },
+  "start": "gate",
+  "nodes": {
+    "gate": {
+      "ip": "10.0.0.1",
+      "ports": [
+        [
+          21,
+          "ftp",
+          "vsftpd 2.3.4 (2011)"
+        ],
+        [
+          80,
+          "http",
+          "nginx 1.25 (2023)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "x": 21,
+      "pay": 30,
+      "name": "gate.net",
+      "files": {
+        "notes": {
+          "name": "notes.txt",
+          "text": {
+            "en": "Admin memo: mail.local uses a tone lock instead of passwords. Our intranet still runs ancient software. DO NOT touch archive.net, it is the honeypot we set up for intruders."
+          }
+        },
+        "log": {
+          "name": "net.log",
+          "text": {
+            "en": "03:12 tunnel opened between mail.local and intra.corp. vault.lab needs keys from both."
+          }
+        }
+      }
+    },
+    "mail": {
+      "ip": "10.0.4.12",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022), tone lock"
+        ],
+        [
+          25,
+          "smtp",
+          "postfix 3.7 (2022)"
+        ]
+      ],
+      "c": 4,
+      "pay": 40,
+      "loot": {
+        "mbox": 25
+      },
+      "name": "mail.local",
+      "files": {
+        "inbox": {
+          "name": "inbox.txt",
+          "text": {
+            "en": "Subject: vault.lab. The database there was never updated. You need an exploit, then a frequency lock, then a six tone lock."
+          }
+        },
+        "mbox": {
+          "name": "archive.mbox",
+          "text": {
+            "en": "Three years of boring emails. A buyer might pay for it."
+          }
+        }
+      },
+      "needs": [
+        "gate"
+      ]
+    },
+    "intra": {
+      "ip": "10.0.6.30",
+      "ports": [
+        [
+          8080,
+          "proxy",
+          "squid 6.1 (2023)"
+        ],
+        [
+          8443,
+          "tomcat",
+          "Tomcat 6.0 (2009)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "x": 8443,
+      "t": 1,
+      "pay": 50,
+      "loot": {
+        "pay": 45
+      },
+      "name": "intra.corp",
+      "files": {
+        "wiki": {
+          "name": "wiki.txt",
+          "text": {
+            "en": "Frequency locks: the ping comes from the side of the correct signal and gets higher as you get closer."
+          }
+        },
+        "pay": {
+          "name": "payroll.xls",
+          "text": {
+            "en": "Salaries of everyone. Sell it to the highest bidder."
+          }
+        }
+      },
+      "needs": [
+        "gate"
+      ]
+    },
+    "arch": {
+      "ip": "10.0.8.8",
+      "ports": [
+        [
+          3306,
+          "mysql",
+          "MySQL 4.1 (2004)"
+        ],
+        [
+          21,
+          "ftp",
+          "vsftpd 1.0 (2002)"
+        ]
+      ],
+      "trap": 1,
+      "name": "archive.net",
+      "files": {},
+      "needs": [
+        "gate"
+      ]
+    },
+    "vault": {
+      "ip": "10.0.9.77",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ],
+        [
+          3306,
+          "mysql",
+          "MySQL 5.0 (2005)"
+        ],
+        [
+          8080,
+          "proxy",
+          "squid 6.1 (2023)"
+        ]
+      ],
+      "x": 3306,
+      "t": 1,
+      "c": 6,
+      "loot": {
+        "staff": 30
+      },
+      "target": "core",
+      "name": "vault.lab",
+      "files": {
+        "staff": {
+          "name": "staff.db",
+          "text": {
+            "en": "Staff records. Not the target."
+          }
+        },
+        "core": {
+          "name": "core.dat",
+          "text": {
+            "en": "Project Zero Day. 48 MB. This is it."
+          }
+        }
+      },
+      "needs": [
+        "mail",
+        "intra"
+      ]
+    }
+  },
+  "order": 20
+}

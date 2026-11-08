@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "name": "Türkçe"
+  },
+  "ui": {
+    "unknown": "Bilinmeyen komut. help yazın.",
+    "no_conn": "Bağlı değilsiniz. connect <name> komutunu kullanın.",
+    "denied": "Erişim reddedildi. Önce sunucuyu ele geçirin.",
+    "scan_h": "Ağdaki sunucular:",
+    "scan_row": "{n}. {name}, {ip} {tag}",
+    "tag_root": "(sizin)",
+    "no_node": "Bu sunucuyu tanımıyorum. scan komutunu kullanın.",
+    "conn_ok": "{name} sunucusuna bağlanıldı. Henüz erişim yok. Servisleri dinlemek için ports yazın.",
+    "conn_root": "{name} sunucusuna bağlanıldı. Yönetici erişiminiz var.",
+    "ports_h": "{name} üzerindeki açık portlar:",
+    "port_row": "Port {p}: {s}, {v}",
+    "usage_exploit": "Kullanım: exploit <port number>",
+    "port_closed": "Bu port kapalı. Zaman kaybettiniz.",
+    "root_already": "Burada yapılacak başka bir şey kalmadı.",
+    "x_ok": "Port {p} istismar edildi! Servis çöktü ve kapı açıldı.",
+    "x_fail": "Bu servis güncel. Saldırı başarısız oldu ve güvenlik fark etti.",
+    "trap": "ALARM! Bu bir tuzaktı ve alarmlar çalıyor.",
+    "no_lock": "Bu sunucuda böyle bir kilit yok.",
+    "need_x": "Kilide henüz ulaşamıyorsunuz. Önce açığı olan bir servisi istismar edin.",
+    "simon_intro": "Ton kilidi: {n} ton dinleyeceksiniz. 1. ton en kalın ve sol kulakta, 4. ton en ince ve sağ kulaktadır. Sonra aynı diziyi 1 ile 4 tuşlarıyla tekrarlayın. R diziyi yeniden çalar ve izinizi 2 artırır.",
+    "your_turn": "Sıra sizde.",
+    "simon_fail": "Yanlış ton. Kilit sıfırlandı. Yeniden denemek için crack yazın.",
+    "simon_ok": "Kilit açıldı!",
+    "simon_auto": "Çözücünüz ton kilidini açtı.",
+    "tune_intro": "Frekans kilidi: kadranı oynatmak için A veya D tuşuna basın. Ping, sinyalin olduğu taraftan gelir ve yaklaştıkça sesi incelir. 14 hakkınız var.",
+    "tune_ok": "Sinyal yakalandı!",
+    "tune_fail": "Hakkınız bitti. Kilit sıfırlandı. Yeniden denemek için tune yazın.",
+    "rooted": "{name} artık sizin! {cr} kredi kazandınız.",
+    "newnode": "Yeni bir sunucu belirdi: {name}. scan komutunu kullanın.",
+    "vault_open": "İki anahtar da toplandı. vault.lab ağda belirdi!",
+    "ls": "Dosyalar: {f}",
+    "no_file": "Böyle bir dosya yok.",
+    "wipe_ok": "Kayıtlar silindi. İz düştü.",
+    "wipe_done": "Bu sunucuyu zaten temizlediniz.",
+    "status": "İz yüzde {t}. Kredi {cr}. {where}",
+    "where_in": "{name} sunucusuna bağlısınız.",
+    "where_none": "Bağlı değilsiniz.",
+    "dl_start": "İndirme başladı. Bir kulağınızdan uyarı sesi gelirse sol için A, sağ için D tuşuna basın. Çabuk olun.",
+    "dl_block": "Güvenlik duvarından kaçtınız.",
+    "dl_caught": "Güvenlik duvarı sizi yakaladı!",
+    "pct": "Yüzde {p}",
+    "dl_other": "İndirildi. Hedef dosya değil ama {cr} kredi değerinde.",
+    "dl_none": "İndirildi. Hedef dosya değil.",
+    "win": "GÖREV TAMAM! Hedef dosya elinizde ve oradan çıktınız. Rütbe: {rank}. İz {t}, kullanılan komut {n}, kredi {cr}.",
+    "lose": "İZİNİZ BULUNDU. Bağlantı kesildi ve görev başarısız oldu. Oyun bitti.",
+    "warn": "UYARI: iz yüzde {p} seviyesinde!",
+    "shop_h": "Ekipman dükkânı. Kredi: {cr}",
+    "shop_row": "{id}: {name}, {price} kredi. {desc}",
+    "noitem": "Böyle bir eşya yok.",
+    "own": "Buna zaten sahipsiniz ve etkin.",
+    "nofunds": "Yeterli krediniz yok.",
+    "bought": "{name} satın alındı.",
+    "used": "{name} kullanıldı.",
+    "inv_empty": "Envanter boş.",
+    "inv_row": "Envanter: {f}",
+    "ev_admin": "Yakınlarda bir yönetici oturum açtı!",
+    "ev_patrol": "Bir güvenlik taraması ağı taradı.",
+    "ev_lucky": "Bir meslektaşınız iyi iş çıkardığınız için size küçük bir ikramiye gönderdi. 15 kredi.",
+    "voice_on": "Sesli okuma açık. Ekran okuyucunuz iki kez okuyorsa kapatın.",
+    "voice_off": "Sesli okuma kapalı.",
+    "vol": "Ses seviyesi {v}",
+    "bye": "Bağlantı kesildi.",
+    "restart_q": "Yeniden oynamak için Enter'a, çıkmak için Ctrl+C'ye basın.",
+    "pick_h": "Görevler:",
+    "pick": "Bir görevin numarasını yazıp Enter'a basın:",
+    "v_none": "Görevde hiç sunucu yok.",
+    "v_start": "Başlangıç sunucusunu seçin.",
+    "v_target": "Hiçbir dosya hedef olarak işaretlenmemiş. Bir dosya satırının üçüncü kısmına target kelimesini yazın.",
+    "v_ports": "{name} sunucusunda hiç servis yok.",
+    "v_x": "{name}: istismar edilecek port, servislerinden biri değil.",
+    "v_c": "{name}: ton kilidi uzunluğu 0 ya da 3 ile 8 arasında olmalı.",
+    "v_lock": "{name} sunucusunda kilit yok. Ona bir istismar portu, frekans kilidi ya da ton kilidi verin ya da tuzak yapın.",
+    "v_needs": "{name} hiç görünmez. Önce hangi sunucuların ele geçirilmesi gerektiğini belirtin.",
+    "v_unreach": "{name} sunucusuna hiçbir zaman ulaşılamaz.",
+    "v_goal": "Hedef dosyaya hiçbir zaman ulaşılamaz."
+  },
+  "gui": {
+    "title": "Sıfır Gün",
+    "tab_term": "Terminal",
+    "tab_notes": "Notlar",
+    "tab_hist": "Geçmiş",
+    "out_l": "Oyun çıktısı:",
+    "in_l": "Komut (göndermek için Enter'a basın):",
+    "notes_l": "Notlarınız (otomatik kaydedilir):",
+    "search_l": "Geçmişte ara:",
+    "hist_l": "Tüm oturumlardaki tüm mesajlar:",
+    "m_file": "&Dosya",
+    "m_view": "&Görünüm",
+    "m_tools": "&Araçlar",
+    "m_quit": "&Çıkış",
+    "m_focus": "&Komut kutusuna git",
+    "m_ms": "&Görev editörü...",
+    "m_tr": "&Çeviri editörü...",
+    "ms_title": "Görev editörü",
+    "ms_list": "Kayıtlı görevler (düzenlemek için birini seçin):",
+    "ms_lang": "Yazdığınız dil:",
+    "ms_name": "Görev adı:",
+    "ms_intro": "Başlangıç hikâyesi (oyuncunun ilk duyacağı metin, her satırda bir paragraf):",
+    "ms_servers": "Bu görevdeki sunucular:",
+    "ms_start": "Oyuncunun başta gördüğü sunucu:",
+    "ms_win": "Oyuncu kazanınca gösterilecek mesaj (isteğe bağlı):",
+    "ms_save": "Görevi kaydet",
+    "ms_new": "Yeni görev",
+    "ms_delete": "Görevi sil",
+    "ms_close": "Kapat",
+    "ms_saved": "Görev kaydedildi. Bir sonraki oyunun başında görev listesinde görünecek.",
+    "ms_noname": "Lütfen göreve bir ad verin.",
+    "ms_nodel": "Bu görev oyunla birlikte geliyor ve silinemez.",
+    "sv_title": "Sunucu",
+    "sv_name": "Sunucu adı, örneğin bank.lab:",
+    "sv_ip": "IP adresi:",
+    "sv_ports": "Servisler, her satırda bir tane: port, ad, sürüm ve yıl. Örnek: 21 ftp vsftpd 2.3.4 (2011). Eski sürümler zayıftır, yeniler güvenlidir:",
+    "sv_x": "İstismar edilecek zayıf servis portu (0, istismar kilidi yok demektir):",
+    "sv_tune": "Frekans kilidi (oyuncu tune komutunu kullanır)",
+    "sv_c": "Ton kilidi uzunluğu (0 ton kilidi yok demektir, aksi halde 3 ile 8 arası):",
+    "sv_pay": "Oyuncunun bu sunucuyu ele geçirince kazanacağı kredi:",
+    "sv_trap": "Bu sunucu bir tuzak (saldırmak izi çok artırır)",
+    "sv_needs": "Bu sunucu, oyuncu şunları ele geçirdikten sonra belirir (uygun olanların hepsini işaretleyin; başlangıç sunucusu hiçbirine ihtiyaç duymaz):",
+    "sv_files": "Dosyalar, her satırda bir tane, şu biçimde: dosya adı | metin | isteğe bağlı kısım. İsteğe bağlı kısım, dosyayı satınca kazanılacak kredi sayısı ya da oyunu kazandıran dosya için target kelimesidir. Metnin içinde | işaretini kullanmayın:",
+    "sv_ok": "Tamam",
+    "sv_cancel": "İptal",
+    "sv_add": "Sunucu ekle",
+    "sv_edit": "Sunucuyu düzenle",
+    "sv_remove": "Sunucuyu kaldır",
+    "sv_select": "Önce listeden bir sunucu seçin.",
+    "sv_bad_port": "Bu satır bir port numarasıyla başlamıyor: {line}",
+    "sv_noname": "Lütfen sunucuya bir ad verin.",
+    "ms_translate": "Bu görevi çevir",
+    "tr_title": "Görevi çevir",
+    "tr_where": "Bu metnin kullanıldığı yer:",
+    "tr_orig": "Özgün metin:",
+    "tr_new": "Çeviriniz ({lang}). Süslü parantez içindeki kelimeleri, örneğin {name}, olduğu gibi bırakın. Özgün metni korumak için boş bırakın:",
+    "tr_prev": "&Önceki",
+    "tr_next": "&Sonraki",
+    "tr_done": "&Bitti ve kaydet",
+    "tr_cancel": "İptal",
+    "tr_count": "{i} / {n}: {where}",
+    "tr_name": "Görev adı",
+    "tr_intro": "Hikâye, {n}. paragraf",
+    "tr_win": "Oyuncu kazanınca gösterilen mesaj",
+    "tr_file": "{server} sunucusundaki {file} dosyası",
+    "tr_same": "Önce 'Yazdığınız dil' alanından çevirmek istediğiniz dili seçin.",
+    "tl_title": "Oyunu çevir",
+    "tl_code": "Dil kodu, örneğin tr, de veya fr:",
+    "tl_ok": "Başla",
+    "tl_bad": "Lütfen iki ya da üç harfli bir dil kodu yazın. en olamaz.",
+    "tl_saved": "Kaydedildi. Oyun metinleri lang/{code}.json dosyasında, çevrilen görevler ise programın yanındaki missions klasöründe. Yeni dili kullanmak için oyunu yeniden başlatın. Windows diliniz eşleşirse otomatik seçilir.",
+    "tr_ph": "Çeviride özgün metinde olmayan, süslü parantez içinde bir kelime var: {ph}. Lütfen düzeltin.",
+    "tt_ui": "Oyun mesajı",
+    "tt_help": "Yardım metni, satır",
+    "tt_intro": "Hikâye satırı",
+    "tt_intro_tip": "Başlangıç ipucu, satır",
+    "tt_ranks": "Rütbe adı",
+    "tt_items": "Dükkân eşyası",
+    "tt_cmd": "Ek komut kelimeleri, virgülle ayrılmış (isteğe bağlı, boş bırakırsanız yalnızca İngilizce komutlar geçerli olur)",
+    "tt_nodes": "Sıfır Gün dosyası",
+    "tt_gui": "Pencere metni"
+  },
+  "help": [
+    "Komutlar: scan, connect <name>, disconnect, ports, exploit <port>, crack, tune, ls, read <file>, get <file>, wipe, status, shop, buy <item>, inv, use <item>, voice on/off, vol 0-10, quit.",
+    "İpuçları: eski yazılımların açıkları vardır. Bazı kilitler önce bir istismar gerektirir. İpuçları için dosyaları okuyun. Her sunucu göründüğü gibi değildir.",
+    "Ton kilidi: 1 ile 4 arası tuşlar, R tekrar çalar. Frekans kilidi: A ve D kadranı oynatır. İndirme sırasında güvenlik duvarı: sol kulak için A, sağ kulak için D."
+  ],
+  "intro": [
+    "SIFIR GÜN",
+    "Yıl 2031. Dev bir şirket, vault.lab üzerinde Sıfır Gün adlı gizli bir proje saklıyor. Oraya giden yol şirketin ağından geçiyor. Kulaklığınızı takın: sesler sol ve sağ kulağınızdan gelir.",
+    "Hedefiniz: core.dat dosyasını vault.lab'den indirmek. Her hamle bir iz bırakır. Duyduğunuz tik tak sesi iz seviyenizdir: ne kadar hızlıysa o kadar yakalanmaya yakınsınız. Yüzde 100'de yakalanırsınız.",
+    "Komutlar için help yazın. Şununla başlayın: scan"
+  ],
+  "intro_tip": [
+    "Her hamle bir iz bırakır. Duyduğunuz tik tak sesi iz seviyenizdir: ne kadar hızlıysa fark edilmeye o kadar yakınsınız. Yüzde 100'de görev başarısız olur.",
+    "Komutlar için help yazın. Şununla başlayın: scan"
+  ],
+  "ranks": [
+    "HAYALET",
+    "OPERATÖR",
+    "ÇAYLAK"
+  ],
+  "items": {
+    "vpn": {
+      "name": "VPN Tüneli",
+      "desc": "Kazandığınız izi kalıcı olarak yüzde 30 azaltır."
+    },
+    "decoder": {
+      "name": "Ton Çözücü",
+      "desc": "Bir sonraki ton kilidi kendiliğinden çözülür."
+    },
+    "jammer": {
+      "name": "Sinyal Bozucu",
+      "desc": "Bir sonraki indirmede güvenlik duvarı uyarısı olmaz."
+    },
+    "ghost": {
+      "name": "Hayalet Protokolü",
+      "desc": "İzi anında 30 düşürür."
+    }
+  },
+  "nodes": {
+    "gate": {
+      "files": {
+        "notes": [
+          "notes.txt",
+          "Yönetici notu: mail.local sunucusu şifre yerine ton kilidi kullanıyor. İntranetimiz hâlâ çok eski yazılımlar çalıştırıyor. archive.net'e SAKIN dokunmayın, o sızanlar için kurduğumuz bal tuzağı."
+        ],
+        "log": [
+          "net.log",
+          "03:12 mail.local ile intra.corp arasında tünel açıldı. vault.lab için ikisinden de anahtar gerekiyor."
+        ]
+      }
+    },
+    "mail": {
+      "files": {
+        "inbox": [
+          "inbox.txt",
+          "Konu: vault.lab. Oradaki veritabanı hiç güncellenmedi. Önce bir istismar, sonra bir frekans kilidi, sonra altı tonluk bir kilit gerekiyor."
+        ],
+        "mbox": [
+          "archive.mbox",
+          "Üç yıllık sıkıcı e-postalar. Bir alıcı bunun için para verebilir."
+        ]
+      }
+    },
+    "intra": {
+      "files": {
+        "wiki": [
+          "wiki.txt",
+          "Frekans kilitleri: ping, doğru sinyalin olduğu taraftan gelir ve yaklaştıkça sesi incelir."
+        ],
+        "pay": [
+          "payroll.xls",
+          "Herkesin maaşları. En yüksek teklif verene satın."
+        ]
+      }
+    },
+    "vault": {
+      "files": {
+        "staff": [
+          "staff.db",
+          "Personel kayıtları. Hedef bu değil."
+        ],
+        "core": [
+          "core.dat",
+          "Sıfır Gün Projesi. 48 MB. İşte bu."
+        ]
+      }
+    }
+  }
+}

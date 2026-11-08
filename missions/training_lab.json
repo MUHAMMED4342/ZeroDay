@@ -1,0 +1,147 @@
+{
+  "id": "training_lab",
+  "order": 1,
+  "name": {
+    "en": "Training Lab",
+    "tr": "Eğitim Laboratuvarı"
+  },
+  "intro": {
+    "en": [
+      "Welcome to the security training lab at Northfield University. This is a practice network built for students, so nothing here is real and you can make mistakes.",
+      "Your goal: download diploma.txt from exam.lab. Each server teaches one skill. Read the files for instructions."
+    ],
+    "tr": [
+      "Northfield Üniversitesi güvenlik eğitim laboratuvarına hoş geldiniz. Burası öğrenciler için kurulmuş bir alıştırma ağı, yani burada hiçbir şey gerçek değil ve hata yapabilirsiniz.",
+      "Hedefiniz: exam.lab sunucusundan diploma.txt dosyasını indirmek. Her sunucu bir beceri öğretir. Talimatlar için dosyaları okuyun."
+    ]
+  },
+  "start": "desk",
+  "nodes": {
+    "desk": {
+      "name": "desk.lab",
+      "ip": "10.1.0.1",
+      "ports": [
+        [
+          21,
+          "ftp",
+          "vsftpd 2.3.4 (2011)"
+        ],
+        [
+          80,
+          "http",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "l1": {
+          "name": "lesson1.txt",
+          "text": {
+            "en": "Lesson 1, the exploit. Type ports and look at the year of each service. The oldest one has a hole. Type exploit and its port number. Trying a modern service fails and raises your trace.",
+            "tr": "Ders 1, istismar. ports yazın ve her servisin yılına bakın. En eskisinin açığı vardır. exploit yazıp port numarasını girin. Modern bir servisi denerseniz başarısız olur ve izinizi artırır."
+          }
+        }
+      },
+      "x": 21,
+      "pay": 20
+    },
+    "tones": {
+      "name": "tones.lab",
+      "ip": "10.1.0.2",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022), tone lock"
+        ]
+      ],
+      "files": {
+        "l2": {
+          "name": "lesson2.txt",
+          "text": {
+            "en": "Lesson 2, the tone lock. Type crack. Listen to the tones, then repeat them with the keys 1 to 4. Tone 1 is low and in your left ear, tone 4 is high and in your right ear. R plays them again.",
+            "tr": "Ders 2, ton kilidi. crack yazın. Tonları dinleyin, sonra 1 ile 4 tuşlarıyla tekrarlayın. 1. ton kalındır ve sol kulağınızdadır, 4. ton incedir ve sağ kulağınızdadır. R tonları yeniden çalar."
+          }
+        }
+      },
+      "c": 3,
+      "pay": 20,
+      "needs": [
+        "desk"
+      ]
+    },
+    "dial": {
+      "name": "dial.lab",
+      "ip": "10.1.0.3",
+      "ports": [
+        [
+          8443,
+          "tomcat",
+          "Tomcat 6.0 (2009)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "files": {
+        "l3": {
+          "name": "lesson3.txt",
+          "text": {
+            "en": "Lesson 3, the frequency lock. Exploit the old service first, then type tune. Press A or D to turn the dial. The ping comes from the side where the signal is, and its pitch rises as you get closer.",
+            "tr": "Ders 3, frekans kilidi. Önce eski servisi istismar edin, sonra tune yazın. Kadranı çevirmek için A veya D tuşuna basın. Ping, sinyalin olduğu taraftan gelir ve yaklaştıkça sesi incelir."
+          }
+        }
+      },
+      "x": 8443,
+      "t": 1,
+      "pay": 30,
+      "needs": [
+        "tones"
+      ]
+    },
+    "exam": {
+      "name": "exam.lab",
+      "ip": "10.1.0.9",
+      "ports": [
+        [
+          3306,
+          "mysql",
+          "MySQL 5.0 (2005)"
+        ],
+        [
+          80,
+          "http",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "l4": {
+          "name": "final.txt",
+          "text": {
+            "en": "Final exam. Use all three skills: exploit first, then tune and crack in any order. When you download, a warning sound comes from one ear. Press A for the left ear or D for the right ear. Tip: wipe lowers your trace, once per server.",
+            "tr": "Final sınavı. Üç beceriyi birlikte kullanın: önce exploit, sonra tune ve crack komutlarını istediğiniz sırada. İndirirken bir kulağınızdan uyarı sesi gelir. Sol kulak için A, sağ kulak için D tuşuna basın. İpucu: wipe komutu izinizi düşürür, sunucu başına bir kez."
+          }
+        },
+        "dip": {
+          "name": "diploma.txt",
+          "text": {
+            "en": "Your training certificate. Well done!",
+            "tr": "Eğitim sertifikanız. Tebrikler!"
+          }
+        }
+      },
+      "x": 3306,
+      "t": 1,
+      "c": 4,
+      "needs": [
+        "dial"
+      ],
+      "target": "dip"
+    }
+  },
+  "win": {
+    "en": "Class dismissed. You passed with your certificate in hand. Try a real mission next.",
+    "tr": "Ders bitti. Sertifikanız elinizde, sınavı geçtiniz. Şimdi gerçek bir göreve geçin."
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "id": "open_doors",
+  "order": 30,
+  "name": {
+    "en": "Open Doors",
+    "tr": "Açık Kapılar"
+  },
+  "intro": {
+    "en": [
+      "St. Mary's Hospital hired your team to test its network before a real attacker does. You have a signed contract. Break in the way an attacker would, but never touch the live patient system.",
+      "Your goal: reach backup.stmary and download proof.txt, a file the hospital placed there so you can prove you got in. Your report will help them fix every weak spot."
+    ],
+    "tr": [
+      "St. Mary Hastanesi, gerçek bir saldırgandan önce ağını test etmeniz için ekibinizi tuttu. İmzalı bir sözleşmeniz var. Bir saldırgan gibi içeri girin ama canlı hasta sistemine asla dokunmayın.",
+      "Hedefiniz: backup.stmary sunucusuna ulaşıp proof.txt dosyasını indirmek. Bu dosyayı hastane, içeri girdiğinizi kanıtlayabilmeniz için oraya koydu. Raporunuz hastanenin her zayıf noktayı kapatmasına yardım edecek."
+    ]
+  },
+  "start": "front",
+  "nodes": {
+    "front": {
+      "name": "front.stmary",
+      "ip": "172.16.0.1",
+      "ports": [
+        [
+          80,
+          "http",
+          "Apache 2.2 (2005)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "c": {
+          "name": "contract.txt",
+          "text": {
+            "en": "Rules of the test: the server patients.stmary runs live patient care. It is watched closely and the test stops at once if you touch it. Everything else is fair game.",
+            "tr": "Test kuralları: patients.stmary sunucusu canlı hasta bakımını yürütüyor. Çok yakından izleniyor ve ona dokunursanız test hemen durdurulur. Geri kalan her şey serbest."
+          }
+        }
+      },
+      "x": 80,
+      "pay": 30
+    },
+    "patients": {
+      "name": "patients.stmary",
+      "ip": "172.16.0.40",
+      "ports": [
+        [
+          1433,
+          "mssql",
+          "SQL Server 2008"
+        ]
+      ],
+      "files": {},
+      "trap": 1,
+      "needs": [
+        "front"
+      ]
+    },
+    "staff": {
+      "name": "staff.stmary",
+      "ip": "172.16.0.20",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022), tone lock"
+        ],
+        [
+          445,
+          "smb",
+          "Samba 3.0 (2007)"
+        ]
+      ],
+      "files": {
+        "n": {
+          "name": "it_note.txt",
+          "text": {
+            "en": "IT note: the backup server needs two keys, one from the staff network and one from the lab.",
+            "tr": "BT notu: yedekleme sunucusu için iki anahtar gerekiyor, biri personel ağından, biri laboratuvardan."
+          }
+        }
+      },
+      "x": 445,
+      "c": 4,
+      "pay": 35,
+      "needs": [
+        "front"
+      ]
+    },
+    "lab": {
+      "name": "lab.stmary",
+      "ip": "172.16.0.30",
+      "ports": [
+        [
+          8443,
+          "tomcat",
+          "Tomcat 6.0 (2009)"
+        ],
+        [
+          8080,
+          "proxy",
+          "squid 6.1 (2023)"
+        ]
+      ],
+      "files": {
+        "w": {
+          "name": "wiki.txt",
+          "text": {
+            "en": "Lab machines report to the backup server every night over a signal link that is tuned by hand.",
+            "tr": "Laboratuvar makineleri her gece yedekleme sunucusuna, elle ayarlanan bir sinyal hattı üzerinden rapor veriyor."
+          }
+        }
+      },
+      "x": 8443,
+      "t": 1,
+      "pay": 35,
+      "needs": [
+        "front"
+      ]
+    },
+    "backup": {
+      "name": "backup.stmary",
+      "ip": "172.16.0.99",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ],
+        [
+          3306,
+          "mysql",
+          "MySQL 5.0 (2005)"
+        ]
+      ],
+      "files": {
+        "p": {
+          "name": "proof.txt",
+          "text": {
+            "en": "Proof of access, placed here by the hospital. Add it to your report.",
+            "tr": "Erişim kanıtı, hastane tarafından buraya konuldu. Raporunuza ekleyin."
+          }
+        }
+      },
+      "x": 3306,
+      "t": 1,
+      "c": 5,
+      "needs": [
+        "staff",
+        "lab"
+      ],
+      "target": "p"
+    }
+  },
+  "win": {
+    "en": "The hospital's security team reads your report that afternoon. Within a week every old server on the list is patched.",
+    "tr": "Hastanenin güvenlik ekibi raporunuzu aynı öğleden sonra okuyor. Bir hafta içinde listedeki her eski sunucu güncelleniyor."
+  }
+}

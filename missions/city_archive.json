@@ -1,0 +1,151 @@
+{
+  "id": "city_archive",
+  "name": {
+    "en": "The Missing Ledger",
+    "tr": "Kayıp Defter"
+  },
+  "start": "portal",
+  "intro": {
+    "en": [
+      "A court has ordered an independent audit of the city's accounts, but the council refuses to cooperate. The court gave you legal access to the city network.",
+      "Your goal: download ledger.pdf from archive.city as evidence. Careful: the city IT department has set a trap, and the court order does not cover it."
+    ],
+    "tr": [
+      "Bir mahkeme, şehrin hesaplarının bağımsız denetimini emretti ama meclis işbirliği yapmıyor. Mahkeme size şehir ağına yasal erişim verdi.",
+      "Hedefiniz: archive.city sunucusundan ledger.pdf dosyasını kanıt olarak indirmek. Dikkat: şehir BT departmanı bir tuzak kurdu ve mahkeme kararı bunu kapsamıyor."
+    ]
+  },
+  "win": {
+    "en": "The ledger goes to the court, and the audit can finally begin.",
+    "tr": "Defter mahkemeye gidiyor ve denetim nihayet başlayabilir."
+  },
+  "nodes": {
+    "portal": {
+      "name": "portal.city",
+      "ip": "192.168.1.1",
+      "x": 80,
+      "pay": 25,
+      "ports": [
+        [
+          80,
+          "http",
+          "Apache 1.3.9 (1999)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "files": {
+        "memo": {
+          "name": "memo.txt",
+          "text": {
+            "en": "Staff memo: the records server uses a five-tone code since last month. Never log into backup.city, IT set it up as bait.",
+            "tr": "Personel notu: kayıt sunucusu geçen aydan beri beş tonluk bir kod kullanıyor. backup.city'ye asla giriş yapmayın, BT onu yem olarak kurdu."
+          }
+        }
+      }
+    },
+    "backup": {
+      "name": "backup.city",
+      "ip": "192.168.1.50",
+      "trap": 1,
+      "needs": [
+        "portal"
+      ],
+      "ports": [
+        [
+          23,
+          "telnet",
+          "telnetd 0.17 (1999)"
+        ]
+      ],
+      "files": {}
+    },
+    "records": {
+      "name": "records.city",
+      "ip": "192.168.1.20",
+      "c": 5,
+      "x": 445,
+      "pay": 40,
+      "needs": [
+        "portal"
+      ],
+      "loot": {
+        "minutes": 20
+      },
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ],
+        [
+          445,
+          "smb",
+          "Samba 3.0 (2007)"
+        ]
+      ],
+      "files": {
+        "minutes": {
+          "name": "minutes.txt",
+          "text": {
+            "en": "Council meeting minutes. The auditors will want a copy.",
+            "tr": "Meclis toplantı tutanakları. Denetçiler bir kopya isteyecek."
+          }
+        },
+        "hint": {
+          "name": "hint.txt",
+          "text": {
+            "en": "The archive server is tuned by hand. The ping points toward the signal.",
+            "tr": "Arşiv sunucusu elle ayarlanıyor. Ping sinyale doğru işaret eder."
+          }
+        }
+      }
+    },
+    "archive": {
+      "name": "archive.city",
+      "ip": "192.168.1.99",
+      "x": 8443,
+      "t": 1,
+      "pay": 0,
+      "needs": [
+        "records"
+      ],
+      "target": "ledger",
+      "ports": [
+        [
+          21,
+          "ftp",
+          "vsftpd 3.0.5 (2021)"
+        ],
+        [
+          8443,
+          "tomcat",
+          "Tomcat 6.0 (2009)"
+        ],
+        [
+          3389,
+          "rdp",
+          "RDP 10 (2019)"
+        ]
+      ],
+      "files": {
+        "ledger": {
+          "name": "ledger.pdf",
+          "text": {
+            "en": "The real ledger. 212 pages.",
+            "tr": "Gerçek defter. 212 sayfa."
+          }
+        }
+      }
+    }
+  },
+  "order": 60
+}

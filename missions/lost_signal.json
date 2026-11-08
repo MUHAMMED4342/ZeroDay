@@ -1,0 +1,141 @@
+{
+  "id": "lost_signal",
+  "order": 45,
+  "name": {
+    "en": "Lost Signal",
+    "tr": "Kayıp Sinyal"
+  },
+  "intro": {
+    "en": [
+      "Three hikers have not come back from the Eagle Ridge trail and a storm is coming in. A court order lets the mountain rescue team search the phone company's network for the last signal of the three missing phones, and nothing else.",
+      "Your goal: download last_seen.dat from locator.telco. Every minute counts."
+    ],
+    "tr": [
+      "Üç yürüyüşçü Kartal Sırtı patikasından dönmedi ve bir fırtına yaklaşıyor. Bir mahkeme kararı, dağ kurtarma ekibinin telefon şirketinin ağında üç kayıp telefonun son sinyalini aramasına izin veriyor, başka hiçbir şeye değil.",
+      "Hedefiniz: locator.telco sunucusundan last_seen.dat dosyasını indirmek. Her dakika önemli."
+    ]
+  },
+  "start": "gate",
+  "nodes": {
+    "gate": {
+      "name": "gate.telco",
+      "ip": "10.30.0.1",
+      "ports": [
+        [
+          23,
+          "telnet",
+          "telnetd 0.17 (1999)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "o": {
+          "name": "order.txt",
+          "text": {
+            "en": "Court order 77: the rescue team may look up the three missing phone numbers only. Nothing else may be read.",
+            "tr": "77 sayılı mahkeme kararı: kurtarma ekibi yalnızca üç kayıp telefon numarasını sorgulayabilir. Başka hiçbir şey okunamaz."
+          }
+        }
+      },
+      "x": 23,
+      "pay": 20
+    },
+    "tower": {
+      "name": "tower.telco",
+      "ip": "10.30.0.20",
+      "ports": [
+        [
+          161,
+          "snmp",
+          "SNMP v1 (1990)"
+        ],
+        [
+          8080,
+          "proxy",
+          "squid 6.1 (2023)"
+        ]
+      ],
+      "files": {
+        "t": {
+          "name": "towers.txt",
+          "text": {
+            "en": "Tower control. The ridge is covered by tower 7, which answers only to a signal tuned by hand.",
+            "tr": "Kule kontrolü. Sırt, yalnızca elle ayarlanan bir sinyale yanıt veren 7 numaralı kule tarafından kapsanıyor."
+          }
+        }
+      },
+      "x": 161,
+      "t": 1,
+      "pay": 30,
+      "needs": [
+        "gate"
+      ]
+    },
+    "billing": {
+      "name": "billing.telco",
+      "ip": "10.30.0.30",
+      "ports": [
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022), tone lock"
+        ]
+      ],
+      "files": {
+        "c": {
+          "name": "customers.txt",
+          "text": {
+            "en": "Customer billing records. Not needed for the search, and the court order forbids reading them.",
+            "tr": "Müşteri fatura kayıtları. Arama için gerekli değil ve mahkeme kararı bunları okumayı yasaklıyor."
+          }
+        }
+      },
+      "c": 5,
+      "pay": 25,
+      "needs": [
+        "gate"
+      ]
+    },
+    "locator": {
+      "name": "locator.telco",
+      "ip": "10.30.0.99",
+      "ports": [
+        [
+          5432,
+          "postgres",
+          "PostgreSQL 8.1 (2006)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "files": {
+        "l": {
+          "name": "last_seen.dat",
+          "text": {
+            "en": "Last known position of the three phones: Eagle Ridge, tower 7, sector B.",
+            "tr": "Üç telefonun bilinen son konumu: Kartal Sırtı, 7 numaralı kule, B sektörü."
+          }
+        }
+      },
+      "x": 5432,
+      "t": 1,
+      "c": 4,
+      "needs": [
+        "tower",
+        "billing"
+      ],
+      "target": "l"
+    }
+  },
+  "win": {
+    "en": "The rescue helicopter takes off with the exact position. All three hikers are found before the storm arrives.",
+    "tr": "Kurtarma helikopteri tam konumla havalanıyor. Fırtına gelmeden üç yürüyüşçü de bulunuyor."
+  }
+}

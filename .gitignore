@@ -1,0 +1,14 @@
+# Python önbellek ve sanal ortamlar
+__pycache__/
+.venv-build/
+.venv/
+
+# PyInstaller derleme çıktıları
+build/
+dist/
+*.spec
+
+# Kullanıcı verileri ve loglar
+.zeroday/
+error.log
+language.txt

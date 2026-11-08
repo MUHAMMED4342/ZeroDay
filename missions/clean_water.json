@@ -1,0 +1,163 @@
+{
+  "id": "clean_water",
+  "order": 50,
+  "name": {
+    "en": "Clean Water",
+    "tr": "Temiz Su"
+  },
+  "intro": {
+    "en": [
+      "The Riverbend water plant found strange commands in its control system. The plant engineers hired you to find how the attacker got in and to copy the attacker's program, so they can remove it from every machine.",
+      "Your goal: download backdoor.bin from control.riverbend. Be careful: the pumps run real water, and the engineers will stop the test at once if you touch them."
+    ],
+    "tr": [
+      "Riverbend su arıtma tesisi, kontrol sisteminde tuhaf komutlar buldu. Tesis mühendisleri, saldırganın nasıl girdiğini bulmanız ve saldırganın programını kopyalamanız için sizi tuttu; böylece programı her makineden kaldırabilecekler.",
+      "Hedefiniz: control.riverbend sunucusundan backdoor.bin dosyasını indirmek. Dikkatli olun: pompalar gerçek su çalıştırıyor ve onlara dokunursanız mühendisler testi hemen durduracak."
+    ]
+  },
+  "start": "office",
+  "nodes": {
+    "office": {
+      "name": "office.riverbend",
+      "ip": "10.40.0.1",
+      "ports": [
+        [
+          80,
+          "http",
+          "IIS 5.0 (2000)"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "e": {
+          "name": "engineers.txt",
+          "text": {
+            "en": "Engineers' note: the operator screen runs on old software we could not update. The controller sits behind it and listens to a hand-tuned signal.",
+            "tr": "Mühendislerin notu: operatör ekranı güncelleyemediğimiz eski bir yazılımda çalışıyor. Kontrolcü onun arkasında ve elle ayarlanan bir sinyali dinliyor."
+          }
+        }
+      },
+      "x": 80,
+      "pay": 30
+    },
+    "hmi": {
+      "name": "operator.riverbend",
+      "ip": "10.40.0.10",
+      "ports": [
+        [
+          3389,
+          "rdp",
+          "RDP 5 (2003)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022), tone lock"
+        ]
+      ],
+      "files": {
+        "l": {
+          "name": "log.txt",
+          "text": {
+            "en": "The attacker left a hidden program on the controller, named backdoor.bin. Never attack pumps.riverbend: it runs the real pumps.",
+            "tr": "Saldırgan kontrolcüde backdoor.bin adında gizli bir program bıraktı. pumps.riverbend sunucusuna asla saldırmayın: gerçek pompaları çalıştırıyor."
+          }
+        }
+      },
+      "x": 3389,
+      "c": 5,
+      "pay": 35,
+      "needs": [
+        "office"
+      ]
+    },
+    "hist": {
+      "name": "history.riverbend",
+      "ip": "10.40.0.20",
+      "ports": [
+        [
+          1433,
+          "mssql",
+          "SQL Server 2005"
+        ],
+        [
+          443,
+          "https",
+          "nginx 1.25 (2023)"
+        ]
+      ],
+      "files": {
+        "r": {
+          "name": "readings.txt",
+          "text": {
+            "en": "Water readings for the last year. The strange commands start on the night of the 3rd.",
+            "tr": "Son bir yılın su ölçümleri. Tuhaf komutlar ayın 3'ü gecesi başlıyor."
+          }
+        }
+      },
+      "x": 1433,
+      "t": 1,
+      "pay": 35,
+      "needs": [
+        "office"
+      ]
+    },
+    "pumps": {
+      "name": "pumps.riverbend",
+      "ip": "10.40.0.77",
+      "ports": [
+        [
+          502,
+          "modbus",
+          "Modbus, no login (1979)"
+        ]
+      ],
+      "files": {},
+      "trap": 1,
+      "needs": [
+        "hmi"
+      ]
+    },
+    "ctrl": {
+      "name": "control.riverbend",
+      "ip": "10.40.0.99",
+      "ports": [
+        [
+          44818,
+          "plc",
+          "PLC firmware 2.1 (2008)"
+        ],
+        [
+          22,
+          "ssh",
+          "OpenSSH 9.1 (2022)"
+        ]
+      ],
+      "files": {
+        "b": {
+          "name": "backdoor.bin",
+          "text": {
+            "en": "A small program that gave an outsider remote control. The engineers will study it and write a fix.",
+            "tr": "Bir yabancıya uzaktan kontrol veren küçük bir program. Mühendisler onu inceleyip bir çözüm yazacak."
+          }
+        }
+      },
+      "x": 44818,
+      "t": 1,
+      "c": 6,
+      "needs": [
+        "hmi",
+        "hist"
+      ],
+      "target": "b"
+    }
+  },
+  "win": {
+    "en": "The engineers now have the program. They remove it from every machine by evening, and the water never stopped flowing.",
+    "tr": "Mühendisler artık programa sahip. Akşama kadar onu her makineden kaldırıyorlar ve su hiç akmayı bırakmıyor."
+  }
+}
